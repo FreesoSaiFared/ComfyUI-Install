@@ -1,0 +1,175 @@
+
+# Claude Flow generated files
+.claude/settings.local.json
+.mcp.json
+claude-flow.config.json
+.swarm/
+.hive-mind/
+.claude-flow/
+memory/
+coordination/
+memory/claude-flow-data.json
+memory/sessions/*
+!memory/sessions/README.md
+memory/agents/*
+!memory/agents/README.md
+coordination/memory_bank/*
+coordination/subtasks/*
+coordination/orchestration/*
+*.db
+*.db-journal
+*.db-wal
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+claude-flow
+# Removed Windows wrapper files per user request
+hive-mind-prompt-*.txt
+
+# Virtual environments
+venv/
+.venv/
+env/
+envs/
+virtualenv/
+virtualenvs/
+
+# Python cache and artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Node.js modules and build artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.node_repl_history
+
+# ComfyUI specific
+models/
+data/
+outputs/
+cache/
+*.pt
+*.safetensors
+*.pth
+*.bin
+*.onnx
+*.engine
+*.trt
+input/
+temp/
+tmp/
+
+# Logs and monitoring
+*.log
+logs/
+log/
+*.out
+*.err
+
+# AI/ML specific
+.huggingface/
+.checkpoint/
+wandb/
+mlruns/
+dvc_cache/
+.tensorboard-info/
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.parquet
+
+# Configuration and secrets
+.env
+.env.local
+.env.development
+.env.production
+.secrets/
+config.local.json
+*.key
+*.pem
+*.p12
+
+# System and runtime
+.ruff_cache/
+.pytest_cache/
+.coverage
+coverage.xml
+*.cover
+htmlcov/
+.tox/
+.nox/
+.pyre/
+
+# OS and IDE
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# Docker
+.dockerignore
+
+# Performance monitoring
+.prof
+*.prof
+.profile
+*.trace
+
+# System state
+*.pid
+*.socket
+*.lock
+
+# ComfyUI custom nodes
+custom_nodes/*/requirements.txt
+custom_nodes/*/setup.py
+custom_nodes/build/
+custom_nodes/dist/
+
+# Worktree artifacts (keep essential worktree files, exclude build artifacts)
+trees/__pycache__/
+trees/*.log
+trees/tmp/
+trees/temp/
+trees/venv/
+trees/env/
+trees/.env*
