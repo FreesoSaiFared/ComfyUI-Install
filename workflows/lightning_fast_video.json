@@ -1,0 +1,310 @@
+{
+  "last_node_id": 15,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [50, 50],
+      "size": {"0": 350, "1": 100},
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {"name": "MODEL", "type": "MODEL", "links": [2], "shape": 3, "slot_index": 0},
+        {"name": "CLIP", "type": "CLIP", "links": [3], "shape": 3, "slot_index": 1},
+        {"name": "VAE", "type": "VAE", "links": [4], "shape": 3, "slot_index": 2}
+      ],
+      "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
+      "widgets_values": ["sdxl_lightning_1step_sft.safetensors"]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [450, 50],
+      "size": {"0": 400, "1": 200},
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 3}
+      ],
+      "outputs": [
+        {"name": "CONDITIONING", "type": "CONDITIONING", "links": [5], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "CLIPTextEncode"},
+      "widgets_values": ["cinematic shot of a waterfall flowing into crystal clear lake, surrounded by lush green forests, golden hour lighting, peaceful atmosphere"]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [450, 300],
+      "size": {"0": 400, "1": 200},
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 3}
+      ],
+      "outputs": [
+        {"name": "CONDITIONING", "type": "CONDITIONING", "links": [6], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "CLIPTextEncode"},
+      "widgets_values": ["blurry, low quality, distorted, text, watermark"]
+    },
+    {
+      "id": 4,
+      "type": "EmptyLatentImage",
+      "pos": [450, 550],
+      "size": {"0": 315, "1": 110},
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {"name": "LATENT", "type": "LATENT", "links": [7], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "EmptyLatentImage"},
+      "widgets_values": [512, 512, 1]
+    },
+    {
+      "id": 5,
+      "type": "AnimateDiffLoader",
+      "pos": [50, 200],
+      "size": {"0": 350, "1": 100},
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {"name": "MOTION_MODEL", "type": "MOTION_MODEL", "links": [8], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "AnimateDiffLoader"},
+      "widgets_values": ["mm_sd_v15_v2.ckpt", false]
+    },
+    {
+      "id": 6,
+      "type": "AnimateDiffInject",
+      "pos": [900, 50],
+      "size": {"0": 250, "1": 100},
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {"name": "motion_model", "type": "MOTION_MODEL", "link": 8},
+        {"name": "model", "type": "MODEL", "link": 2}
+      ],
+      "outputs": [
+        {"name": "MODEL", "type": "MODEL", "links": [9], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "AnimateDiffInject"}
+    },
+    {
+      "id": 7,
+      "type": "KSampler",
+      "pos": [1250, 50],
+      "size": {"0": 300, "1": 262},
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 9},
+        {"name": "positive", "type": "CONDITIONING", "link": 5},
+        {"name": "negative", "type": "CONDITIONING", "link": 6},
+        {"name": "latent_image", "type": "LATENT", "link": 7}
+      ],
+      "outputs": [
+        {"name": "LATENT", "type": "LATENT", "links": [10], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "KSampler"},
+      "widgets_values": [42, true, 1, 2, "euler_ancestral", "normal", 1.0]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [1600, 50],
+      "size": {"0": 210, "1": 46},
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {"name": "samples", "type": "LATENT", "link": 10},
+        {"name": "vae", "type": "VAE", "link": 4}
+      ],
+      "outputs": [
+        {"name": "IMAGE", "type": "IMAGE", "links": [11], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "VAEDecode"}
+    },
+    {
+      "id": 9,
+      "type": "AnimateDiffCombine",
+      "pos": [1850, 50],
+      "size": {"0": 250, "1": 100},
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {"name": "images", "type": "IMAGE", "link": 11}
+      ],
+      "outputs": [
+        {"name": "IMAGE", "type": "IMAGE", "links": [12], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "AnimateDiffCombine"},
+      "widgets_values": [16, "default", 1.0]
+    },
+    {
+      "id": 10,
+      "type": "SaveAnimatedWEBP",
+      "pos": [2150, 50],
+      "size": {"0": 315, "1": 194},
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {"name": "images", "type": "IMAGE", "link": 12}
+      ],
+      "outputs": [],
+      "properties": {"Node name for S&R": "SaveAnimatedWEBP"},
+      "widgets_values": ["ComfyUI", "lightning_video_", 16, true, 90, 75, "output", "webp", 1]
+    },
+    {
+      "id": 11,
+      "type": "LoraLoader",
+      "pos": [900, 200],
+      "size": {"0": 360, "1": 130},
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 2},
+        {"name": "clip", "type": "CLIP", "link": 3}
+      ],
+      "outputs": [
+        {"name": "MODEL", "type": "MODEL", "links": [13], "shape": 3, "slot_index": 0},
+        {"name": "CLIP", "type": "CLIP", "links": [14], "shape": 3, "slot_index": 1}
+      ],
+      "properties": {"Node name for S&R": "LoraLoader"},
+      "widgets_values": ["lcm-lora-sdxl.safetensors", 1.0, 1.0]
+    },
+    {
+      "id": 12,
+      "type": "LoraLoader",
+      "pos": [50, 350],
+      "size": {"0": 360, "1": 130},
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 13},
+        {"name": "clip", "type": "CLIP", "link": 14}
+      ],
+      "outputs": [
+        {"name": "MODEL", "type": "MODEL", "links": [15], "shape": 3, "slot_index": 0},
+        {"name": "CLIP", "type": "CLIP", "links": [16], "shape": 3, "slot_index": 1}
+      ],
+      "properties": {"Node name for S&R": "LoraLoader"},
+      "widgets_values": ["lightning_lora_boost.safetensors", 0.8, 1.2]
+    },
+    {
+      "id": 13,
+      "type": "CLIPTextEncode",
+      "pos": [450, 700],
+      "size": {"0": 400, "1": 200},
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 16}
+      ],
+      "outputs": [
+        {"name": "CONDITIONING", "type": "CONDITIONING", "links": [17], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "CLIPTextEncode"},
+      "widgets_values": ["enhanced details, high quality, 8k resolution"]
+    },
+    {
+      "id": 14,
+      "type": "ConditioningAverage",
+      "pos": [900, 350],
+      "size": {"0": 250, "1": 100},
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {"name": "conditioning_to", "type": "CONDITIONING", "link": 5},
+        {"name": "conditioning_from", "type": "CONDITIONING", "link": 17}
+      ],
+      "outputs": [
+        {"name": "CONDITIONING", "type": "CONDITIONING", "links": [18], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "ConditioningAverage"},
+      "widgets_values": [0.7]
+    },
+    {
+      "id": 15,
+      "type": "KSamplerSelect",
+      "pos": [1250, 300],
+      "size": {"0": 315, "1": 58},
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "outputs": [
+        {"name": "SAMPLER", "type": "SAMPLER", "links": [19], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "KSamplerSelect"},
+      "widgets_values": ["dpmpp_2m_sde"]
+    },
+    {
+      "id": 16,
+      "type": "SchedulerSelect",
+      "pos": [1600, 300],
+      "size": {"0": 315, "1": 58},
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "outputs": [
+        {"name": "SCHEDULER", "type": "SCHEDULER", "links": [20], "shape": 3, "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "SchedulerSelect"},
+      "widgets_values": ["sgm_uniform"]
+    }
+  ],
+  "links": [
+    [2, 1, 0, 6, 0, "MODEL"],
+    [3, 1, 1, 2, 0, "CLIP"],
+    [3, 1, 1, 3, 0, "CLIP"],
+    [4, 1, 2, 8, 1, "VAE"],
+    [5, 2, 0, 7, 1, "CONDITIONING"],
+    [6, 3, 0, 7, 2, "CONDITIONING"],
+    [7, 4, 0, 7, 3, "LATENT"],
+    [8, 5, 0, 6, 0, "MOTION_MODEL"],
+    [9, 6, 0, 7, 0, "MODEL"],
+    [10, 7, 0, 8, 0, "LATENT"],
+    [11, 8, 0, 9, 0, "IMAGE"],
+    [12, 9, 0, 10, 0, "IMAGE"],
+    [13, 11, 0, 12, 0, "MODEL"],
+    [14, 11, 1, 12, 1, "CLIP"],
+    [15, 12, 0, 7, 0, "MODEL"],
+    [16, 12, 1, 13, 0, "CLIP"],
+    [17, 13, 0, 14, 1, "CONDITIONING"],
+    [18, 14, 0, 7, 1, "CONDITIONING"],
+    [19, 15, 0, 7, 4, "SAMPLER"],
+    [20, 16, 0, 7, 5, "SCHEDULER"]
+  ],
+  "groups": [
+    {
+      "title": "⚡ Lightning Fast Generation (1-3 seconds)",
+      "bounding": [30, 10, 2540, 400],
+      "color": "#FF5733",
+      "font_size": 24
+    },
+    {
+      "title": "🚀 Speed Optimization",
+      "bounding": [30, 420, 1400, 320],
+      "color": "#33FF57",
+      "font_size": 18
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

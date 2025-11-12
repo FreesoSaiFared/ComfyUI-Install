@@ -1,0 +1,56 @@
+# Custom Nodes Tracking Configuration
+# This configuration file tracks custom nodes installed via ComfyUI-Manager
+
+# Tracker settings
+monitoring:
+  enabled: true
+  check_interval: 60  # seconds
+  enable_file_watcher: true
+  log_changes: true
+  export_inventory: true
+
+# API settings
+api:
+  base_url: "http://localhost:8188"
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 5
+
+# Paths
+paths:
+  comfyui_install: "/home/ned/ComfyUI-Install/ComfyUI"
+  custom_nodes: "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes"
+  config_dir: "/home/ned/Projects/AI_ML/SwarmUI/dlbackend/ComfyUI/user/default/ComfyUI-Manager"
+  export_dir: "/home/ned/ComfyUI-Install/config/custom_nodes"
+
+# Export settings
+export:
+  formats: ["json", "yaml"]
+  include_summary: true
+  include_detailed_info: true
+  backup_previous: true
+
+# Node categories to track
+categories:
+  image_processing: true
+  video_processing: true
+  text_processing: true
+  model_management: true
+  utilities: true
+  samplers: true
+  conditioning: true
+
+# Alert settings
+alerts:
+  new_node_installed: true
+  node_removed: true
+  node_updated: true
+  git_sync_failure: true
+  size_threshold: 100  # MB
+
+# Health checks
+health:
+  check_api_connectivity: true
+  check_file_permissions: true
+  check_git_repos: true
+  check_dependencies: true

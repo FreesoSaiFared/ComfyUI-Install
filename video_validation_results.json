@@ -1,0 +1,422 @@
+{
+  "timestamp": "2025-11-12T09:03:55.400186",
+  "total_workflows": 29,
+  "total_nodes": 90,
+  "total_models": 14,
+  "found_models": 2,
+  "missing_models": 12,
+  "success_rate": 14.285714285714285,
+  "workflows": [
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-kjnodes/example_workflows/leapfusion_hunyuuanvideo_i2v_native_testing.json",
+      "total_nodes": 22,
+      "total_models": 6,
+      "found_models": 0,
+      "missing_models": 6,
+      "models_detail": [
+        {
+          "filename": "hyvideo\\hunyuan_video_720_fp8_e4m3fn.safetensors",
+          "node_id": "44",
+          "node_type": "UNETLoader",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "unknown",
+          "folder": "checkpoints",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "hyvid\\hunyuan_video_vae_bf16.safetensors",
+          "node_id": "49",
+          "node_type": "VAELoader",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "vae",
+          "folder": "vae",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "clip_l.safetensors",
+          "node_id": "47",
+          "node_type": "DualCLIPLoader",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "clip",
+          "folder": "clip",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "llava_llama3_fp16.safetensors",
+          "node_id": "47",
+          "node_type": "DualCLIPLoader",
+          "source": "widgets_values",
+          "index": 1,
+          "model_type": "clip",
+          "folder": "clip",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "https://huggingface.co/Kijai/Leapfusion-image2vid-comfy/blob/main/leapfusion_img2vid544p_comfy.safetensors",
+          "node_id": "85",
+          "node_type": "Note",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "unknown",
+          "folder": "checkpoints",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "hyvid\\musubi-tuner\\img2vid544p.safetensors",
+          "node_id": "59",
+          "node_type": "LoraLoaderModelOnly",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "lora",
+          "folder": "loras",
+          "exists": false,
+          "found_paths": []
+        }
+      ]
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/audio.json",
+      "total_nodes": 4,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/batch4x4.json",
+      "total_nodes": 7,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/converted-format-input.json",
+      "total_nodes": 4,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/converted-input.json",
+      "total_nodes": 4,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/loop.json",
+      "total_nodes": 2,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/old-prores.json",
+      "total_nodes": 5,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/old-vae-conversion.json",
+      "total_nodes": 3,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/tests/simple.json",
+      "total_nodes": 2,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": []
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/16bit-png.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/8bit-png.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/ProRes.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/av1-webm.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/ffmpeg-gif.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/ffv1-mkv.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/gifski.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/h264-mp4.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/h265-mp4.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/nvenc_av1-mp4.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/nvenc_h264-mp4.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/nvenc_hevc-mp4.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite/video_formats/webm.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/workflows/ltx_rtx3060_final_test.json",
+      "total_nodes": 8,
+      "total_models": 1,
+      "found_models": 1,
+      "missing_models": 0,
+      "models_detail": [
+        {
+          "filename": "ltx-video-2b-v0.9.5.safetensors",
+          "node_id": "1",
+          "node_type": "CheckpointLoaderSimple",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "ltx_video",
+          "folder": "checkpoints",
+          "exists": true,
+          "found_paths": [
+            "/home/ned/ComfyUI-Install/ComfyUI/models/checkpoints/ltx-video-2b-v0.9.5.safetensors"
+          ]
+        }
+      ]
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/workflows/ltx_rtx3060_optimized.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/workflows/ltx_text2video_basic.json",
+      "total_nodes": 8,
+      "total_models": 1,
+      "found_models": 1,
+      "missing_models": 0,
+      "models_detail": [
+        {
+          "filename": "ltx-video-2b-v0.9.5.safetensors",
+          "node_id": "1",
+          "node_type": "CheckpointLoaderSimple",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "ltx_video",
+          "folder": "checkpoints",
+          "exists": true,
+          "found_paths": [
+            "/home/ned/ComfyUI-Install/ComfyUI/models/checkpoints/ltx-video-2b-v0.9.5.safetensors"
+          ]
+        }
+      ]
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/workflows/ltx_video_config.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/workflows/wan2_image2video_rtx3060.json",
+      "total_nodes": 11,
+      "total_models": 3,
+      "found_models": 0,
+      "missing_models": 3,
+      "models_detail": [
+        {
+          "filename": "wan2.2_ti2v_5B_fp16.safetensors",
+          "node_id": "1",
+          "node_type": "CheckpointLoaderSimple",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "wan2_video",
+          "folder": "checkpoints",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+          "node_id": "10",
+          "node_type": "LoadCLIP",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "clip",
+          "folder": "clip",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "wan2.2_vae.safetensors",
+          "node_id": "11",
+          "node_type": "LoadVAE",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "wan2_video",
+          "folder": "checkpoints",
+          "exists": false,
+          "found_paths": []
+        }
+      ]
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/workflows/wan2_rtx3060_config.json",
+      "total_nodes": 0,
+      "total_models": 0,
+      "found_models": 0,
+      "missing_models": 0,
+      "models_detail": [],
+      "error": "No valid nodes found in workflow"
+    },
+    {
+      "workflow_file": "/home/ned/ComfyUI-Install/ComfyUI/workflows/wan2_text2video_rtx3060.json",
+      "total_nodes": 10,
+      "total_models": 3,
+      "found_models": 0,
+      "missing_models": 3,
+      "models_detail": [
+        {
+          "filename": "wan2.2_ti2v_5B_fp16.safetensors",
+          "node_id": "1",
+          "node_type": "CheckpointLoaderSimple",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "wan2_video",
+          "folder": "checkpoints",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+          "node_id": "9",
+          "node_type": "LoadCLIP",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "clip",
+          "folder": "clip",
+          "exists": false,
+          "found_paths": []
+        },
+        {
+          "filename": "wan2.2_vae.safetensors",
+          "node_id": "10",
+          "node_type": "LoadVAE",
+          "source": "widgets_values",
+          "index": 0,
+          "model_type": "wan2_video",
+          "folder": "checkpoints",
+          "exists": false,
+          "found_paths": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "export_timestamp": "2025-10-08T00:07:41.302279",
+  "config": {
+    "check_interval": 60,
+    "api_timeout": 10,
+    "comfyui_port": 8188,
+    "enable_gpu_monitoring": true,
+    "enable_dependency_tracking": true,
+    "alert_thresholds": {
+      "cpu_usage": 80.0,
+      "memory_usage": 85.0,
+      "disk_usage": 90.0,
+      "gpu_memory_usage": 90.0
+    },
+    "repair_suggestions": true,
+    "log_retention_days": 30
+  },
+  "current_health": {
+    "timestamp": "2025-10-08T00:07:34.739336",
+    "overall_status": "CRITICAL",
+    "component_counts": {
+      "HEALTHY": 2,
+      "WARNING": 0,
+      "CRITICAL": 2,
+      "UNKNOWN": 0
+    },
+    "recent_alerts": [
+      {
+        "timestamp": "2025-10-08T00:07:41.301781",
+        "component": "service",
+        "severity": "CRITICAL",
+        "message": "ComfyUI service not running",
+        "suggestions": [
+          "Start ComfyUI service: cd /home/ned/ComfyUI-Install/ComfyUI && python main.py --port 8188",
+          "Check startup scripts in /home/ned/ComfyUI-Install/scripts/",
+          "Review logs for startup errors"
+        ]
+      },
+      {
+        "timestamp": "2025-10-08T00:07:41.301817",
+        "component": "custom_nodes",
+        "severity": "CRITICAL",
+        "message": "Critical: 11/20 nodes have serious issues",
+        "suggestions": [
+          "Run dependency installation for affected nodes",
+          "Check ComfyUI compatibility for each node",
+          "Consider removing problematic nodes"
+        ]
+      }
+    ],
+    "monitoring_active": false,
+    "total_checks": 1
+  },
+  "recent_health_history": [
+    {
+      "timestamp": "2025-10-08T00:07:41.301476",
+      "results": {
+        "service": {
+          "name": "comfyui_service",
+          "status": "CRITICAL",
+          "message": "ComfyUI service not running",
+          "timestamp": "2025-10-08T00:07:34.739336",
+          "details": null,
+          "suggestions": [
+            "Start ComfyUI service: cd /home/ned/ComfyUI-Install/ComfyUI && python main.py --port 8188",
+            "Check startup scripts in /home/ned/ComfyUI-Install/scripts/",
+            "Review logs for startup errors"
+          ]
+        },
+        "custom_nodes": {
+          "name": "custom_nodes",
+          "status": "CRITICAL",
+          "message": "Critical: 11/20 nodes have serious issues",
+          "timestamp": "2025-10-08T00:07:34.833327",
+          "details": {
+            "total_nodes": 20,
+            "nodes_with_issues": 11,
+            "nodes_with_warnings": 0,
+            "nodes": [
+              {
+                "name": "ComfyUI-Manager",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/ComfyUI-Manager",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: GitPython",
+                  "Missing: PyGithub",
+                  "Missing: matrix-nio",
+                  "Missing: transformers",
+                  "Missing: huggingface-hub>0.20",
+                  "Missing: typer",
+                  "Missing: rich",
+                  "Missing: typing-extensions",
+                  "Missing: toml",
+                  "Missing: uv",
+                  "Missing: chardet"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "ComfyUI-Civitai-Toolkit",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/ComfyUI-Civitai-Toolkit",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: markdown-it-py",
+                  "Missing: orjson",
+                  "Missing: tqdm"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "civitai_comfy_nodes",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/civitai_comfy_nodes",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-lora-auto-trigger-words",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-lora-auto-trigger-words",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "comfy-image-saver",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfy-image-saver",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: piexif"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-model-downloader",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-model-downloader",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "ComfyUI_Civitai_Gallery",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/ComfyUI_Civitai_Gallery",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-custom-scripts",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-custom-scripts",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "rgthree-comfy",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/rgthree-comfy",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-easy-use",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-easy-use",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: diffusers",
+                  "Missing: accelerate",
+                  "Missing: clip_interrogator",
+                  "Missing: lark",
+                  "Missing: onnxruntime",
+                  "Missing: opencv-python",
+                  "Missing: sentencepiece",
+                  "Missing: spandrel",
+                  "Missing: matplotlib",
+                  "Missing: peft"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-kjnodes",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-kjnodes",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: pillow",
+                  "Missing: scipy",
+                  "Missing: color-matcher",
+                  "Missing: matplotlib",
+                  "Missing: huggingface_hub",
+                  "Missing: mss",
+                  "Missing: opencv-python"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-videohelpersuite",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-videohelpersuite",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: opencv-python",
+                  "Missing: imageio-ffmpeg"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "comfyui_essentials",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui_essentials",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: numba",
+                  "Missing: colour-science",
+                  "Missing: rembg",
+                  "Missing: pixeloe",
+                  "Missing: transparent-background"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-frame-interpolation",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-frame-interpolation",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "comfyui-mxtoolkit",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/comfyui-mxtoolkit",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "ComfyUI-bleh",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/ComfyUI-bleh",
+                "exists": true,
+                "has_issues": false,
+                "has_warnings": false,
+                "issues": [],
+                "warnings": []
+              },
+              {
+                "name": "was-node-suite-comfyui",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/was-node-suite-comfyui",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: cmake",
+                  "Missing: fairscale",
+                  "Missing: git+https://github.com/WASasquatch/img2texture.git",
+                  "Missing: git+https://github.com/WASasquatch/cstr",
+                  "Missing: gitpython",
+                  "Missing: imageio",
+                  "Missing: joblib",
+                  "Missing: matplotlib",
+                  "Missing: numba",
+                  "Missing: numpy",
+                  "Missing: opencv-python-headless[ffmpeg]",
+                  "Missing: pilgram",
+                  "Missing: git+https://github.com/WASasquatch/ffmpy.git",
+                  "Missing: rembg",
+                  "Missing: scikit-image",
+                  "Missing: scikit-learn",
+                  "Missing: scipy",
+                  "Missing: timm",
+                  "Missing: tqdm",
+                  "Missing: transformers"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "ComfyUI-GGUF",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/ComfyUI-GGUF",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: gguf",
+                  "Missing: sentencepiece",
+                  "Missing: protobuf"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "ComfyUI-Crystools",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/ComfyUI-Crystools",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: deepdiff",
+                  "Missing: torch",
+                  "Missing: numpy",
+                  "Missing: Pillow",
+                  "Missing: pynvml; platform_machine != 'aarch64'",
+                  "Missing: py-cpuinfo",
+                  "Missing: piexif",
+                  "Missing: jetson-stats; platform_machine"
+                ],
+                "warnings": []
+              },
+              {
+                "name": "ComfyUI-GGUF-FantasyTalking",
+                "path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes/ComfyUI-GGUF-FantasyTalking",
+                "exists": true,
+                "has_issues": true,
+                "has_warnings": false,
+                "issues": [
+                  "Missing: gguf",
+                  "Missing: ftfy",
+                  "Missing: accelerate",
+                  "Missing: einops",
+                  "Missing: diffusers",
+                  "Missing: sentencepiece",
+                  "Missing: protobuf",
+                  "Syntax error in nodes.py: (unicode error) 'unicodeescape' codec can't decode bytes in position 149-150: truncated \\UXXXXXXXX escape"
+                ],
+                "warnings": []
+              }
+            ]
+          },
+          "suggestions": [
+            "Run dependency installation for affected nodes",
+            "Check ComfyUI compatibility for each node",
+            "Consider removing problematic nodes"
+          ]
+        },
+        "system_resources": {
+          "name": "system_resources",
+          "status": "HEALTHY",
+          "message": "System resources normal - CPU: 1.9%, Memory: 14.8%, Disk: 86.5%",
+          "timestamp": "2025-10-08T00:07:40.224205",
+          "details": {
+            "cpu_usage": 1.8611670020120763,
+            "memory_usage": 14.753674669082928,
+            "disk_usage": 86.47065676388547,
+            "gpu_usage": 0.0,
+            "gpu_memory": 1.7822265625,
+            "timestamp": "2025-10-08T00:07:41.266573"
+          },
+          "suggestions": null
+        },
+        "api_connectivity": {
+          "name": "api_connectivity",
+          "status": "HEALTHY",
+          "message": "API connected successfully, 19 nodes reported",
+          "timestamp": "2025-10-08T00:07:41.266674",
+          "details": {
+            "response_status": 200,
+            "node_count": 19
+          },
+          "suggestions": null
+        }
+      }
+    }
+  ],
+  "alerts": [
+    {
+      "timestamp": "2025-10-08T00:07:41.301781",
+      "component": "service",
+      "severity": "CRITICAL",
+      "message": "ComfyUI service not running",
+      "suggestions": [
+        "Start ComfyUI service: cd /home/ned/ComfyUI-Install/ComfyUI && python main.py --port 8188",
+        "Check startup scripts in /home/ned/ComfyUI-Install/scripts/",
+        "Review logs for startup errors"
+      ]
+    },
+    {
+      "timestamp": "2025-10-08T00:07:41.301817",
+      "component": "custom_nodes",
+      "severity": "CRITICAL",
+      "message": "Critical: 11/20 nodes have serious issues",
+      "suggestions": [
+        "Run dependency installation for affected nodes",
+        "Check ComfyUI compatibility for each node",
+        "Consider removing problematic nodes"
+      ]
+    }
+  ],
+  "summary": {
+    "total_checks_run": 1,
+    "active_alerts": 2,
+    "monitoring_uptime": "N/A"
+  }
+}

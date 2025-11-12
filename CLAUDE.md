@@ -238,3 +238,25 @@ npx claude-flow@alpha hooks session-end --export-metrics true
 ---
 
 **Remember: Claude Flow coordinates, Claude Code creates! Use worktrees for isolation, hooks for safety, and agents for specialization.**
+- this directory is about configuring, running and maintaining the ComfyUI installation in ./ComfyUI
+- this is the systems main ComfyUI installation. It must be always checked to be running and be started, preferably through system configuration, but if necessery directly
+- always execute source ComfyUI/venv/bin/activate before doing any python installations
+
+## 🚀 ComfyUI Startup Command
+
+**Optimized startup for RTX 3060 12GB (VRAM efficient):**
+```bash
+cd /home/ned/ComfyUI-Install/ComfyUI
+source venv/bin/activate
+python main.py --listen 0.0.0.0 --port 8188 --cpu
+```
+
+**Background startup (VRAM optimized):**
+```bash
+cd /home/ned/ComfyUI-Install/ComfyUI
+source venv/bin/activate && python main.py --listen 0.0.0.0 --port 8188 --cpu &
+```
+
+**Access Web Interface:** http://192.168.178.15:8188
+
+**⚠️ Important:** The `--cpu` flag enables CPU offloading (keeps GPU active!) and reduces VRAM usage by offloading models to CPU when not in use.

@@ -1,0 +1,342 @@
+{
+  "timestamp": "2025-10-08T00:30:27.782710",
+  "custom_nodes_path": "/home/ned/ComfyUI-Install/ComfyUI/custom_nodes",
+  "validation_results": {
+    "ComfyUI-Manager": {
+      "name": "ComfyUI-Manager",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: GitPython",
+        "dependencies: Missing dependency: PyGithub",
+        "dependencies: Missing dependency: matrix-nio",
+        "dependencies: Missing dependency: transformers",
+        "dependencies: Missing dependency: huggingface-hub",
+        "dependencies: Missing dependency: typer",
+        "dependencies: Missing dependency: rich",
+        "dependencies: Missing dependency: typing-extensions",
+        "dependencies: Missing dependency: toml",
+        "dependencies: Missing dependency: uv",
+        "dependencies: Missing dependency: chardet"
+      ],
+      "warnings": [
+        "git: Git repository has uncommitted changes",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in scanner.py: No module named 'git'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in manager_server.py: No module named 'folder_paths'"
+      ],
+      "timestamp": "2025-10-08T00:30:25.858580"
+    },
+    "ComfyUI-Civitai-Toolkit": {
+      "name": "ComfyUI-Civitai-Toolkit",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: markdown-it-py",
+        "dependencies: Missing dependency: orjson",
+        "dependencies: Missing dependency: tqdm"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'comfy'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes_display.py: No module named 'markdown_it'"
+      ],
+      "timestamp": "2025-10-08T00:30:25.971908"
+    },
+    "civitai_comfy_nodes": {
+      "name": "civitai_comfy_nodes",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "structure: No dependency management files found (requirements.txt, install.py, or pyproject.toml)",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:25.991239"
+    },
+    "comfyui-lora-auto-trigger-words": {
+      "name": "comfyui-lora-auto-trigger-words",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes_autotrigger.py: No module named 'comfy'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes_utils.py: attempted relative import with no known parent package"
+      ],
+      "timestamp": "2025-10-08T00:30:25.999316"
+    },
+    "comfy-image-saver": {
+      "name": "comfy-image-saver",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: piexif"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'piexif'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.013940"
+    },
+    "comfyui-model-downloader": {
+      "name": "comfyui-model-downloader",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "structure: No dependency management files found (requirements.txt, install.py, or pyproject.toml)",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.025442"
+    },
+    "ComfyUI_Civitai_Gallery": {
+      "name": "ComfyUI_Civitai_Gallery",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in Civitai_Gallery.py: No module named 'server'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in Civitai_Models_Gallery.py: No module named 'server'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.041789"
+    },
+    "comfyui-custom-scripts": {
+      "name": "comfyui-custom-scripts",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in better_combos.py: No module named 'nodes'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in constrain_image.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in constrain_image_for_video.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in text_files.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in workflows.py: No module named 'server'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.066918"
+    },
+    "rgthree-comfy": {
+      "name": "rgthree-comfy",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'execution'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.122692"
+    },
+    "comfyui-easy-use": {
+      "name": "comfyui-easy-use",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: diffusers",
+        "dependencies: Missing dependency: accelerate",
+        "dependencies: Missing dependency: clip_interrogator",
+        "dependencies: Missing dependency: lark",
+        "dependencies: Missing dependency: onnxruntime",
+        "dependencies: Missing dependency: opencv-python",
+        "dependencies: Missing dependency: sentencepiece",
+        "dependencies: Missing dependency: spandrel",
+        "dependencies: Missing dependency: matplotlib",
+        "dependencies: Missing dependency: peft"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in adv_encode.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in controlnet.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in loader.py: No module named 'psutil'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in adapter.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in api.py: No module named 'comfy'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in deprecated.py: No module named 'numpy'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in fix.py: No module named 'comfy'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in image.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in inpaint.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in loaders.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in logic.py: No module named 'nodes'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in pipe.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in preSampling.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in prompt.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in samplers.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in seed.py: attempted relative import with no known parent package",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in util.py: No module named 'folder_paths'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in xyplot.py: No module named 'comfy'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.616725"
+    },
+    "comfyui-kjnodes": {
+      "name": "comfyui-kjnodes",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: pillow",
+        "dependencies: Missing dependency: scipy",
+        "dependencies: Missing dependency: color-matcher",
+        "dependencies: Missing dependency: matplotlib",
+        "dependencies: Missing dependency: huggingface_hub",
+        "dependencies: Missing dependency: mss",
+        "dependencies: Missing dependency: opencv-python"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in lora_nodes.py: No module named 'torch'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.800096"
+    },
+    "comfyui-videohelpersuite": {
+      "name": "comfyui-videohelpersuite",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: opencv-python",
+        "dependencies: Missing dependency: imageio-ffmpeg"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'numpy'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.853702"
+    },
+    "comfyui_essentials": {
+      "name": "comfyui_essentials",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: numba",
+        "dependencies: Missing dependency: colour-science",
+        "dependencies: Missing dependency: rembg",
+        "dependencies: Missing dependency: pixeloe",
+        "dependencies: Missing dependency: transparent-background"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:26.905088"
+    },
+    "comfyui-frame-interpolation": {
+      "name": "comfyui-frame-interpolation",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.129569"
+    },
+    "comfyui-mxtoolkit": {
+      "name": "comfyui-mxtoolkit",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in mxtoolkit.py: No module named 'nodes'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.132787"
+    },
+    "ComfyUI-bleh": {
+      "name": "ComfyUI-bleh",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "structure: No dependency management files found (requirements.txt, install.py, or pyproject.toml)",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'nodes'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.216838"
+    },
+    "was-node-suite-comfyui": {
+      "name": "was-node-suite-comfyui",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Invalid requirement format: git+https://github.com/WASasquatch/img2texture.git",
+        "dependencies: Invalid requirement format: git+https://github.com/WASasquatch/cstr",
+        "dependencies: Invalid requirement format: opencv-python-headless[ffmpeg]",
+        "dependencies: Invalid requirement format: git+https://github.com/WASasquatch/ffmpy.git",
+        "dependencies: Missing dependency: cmake",
+        "dependencies: Missing dependency: fairscale",
+        "dependencies: Missing dependency: gitpython",
+        "dependencies: Missing dependency: imageio",
+        "dependencies: Missing dependency: joblib",
+        "dependencies: Missing dependency: matplotlib",
+        "dependencies: Missing dependency: numba",
+        "dependencies: Missing dependency: numpy",
+        "dependencies: Missing dependency: pilgram",
+        "dependencies: Missing dependency: rembg",
+        "dependencies: Missing dependency: scikit-image",
+        "dependencies: Missing dependency: scikit-learn",
+        "dependencies: Missing dependency: scipy",
+        "dependencies: Missing dependency: timm",
+        "dependencies: Missing dependency: tqdm",
+        "dependencies: Missing dependency: transformers"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in WAS_Node_Suite.py: No module named 'PIL'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.517203"
+    },
+    "ComfyUI-GGUF": {
+      "name": "ComfyUI-GGUF",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: gguf",
+        "dependencies: Missing dependency: sentencepiece",
+        "dependencies: Missing dependency: protobuf"
+      ],
+      "warnings": [
+        "mappings: NODE_CLASS_MAPPINGS not found in __init__.py after import",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'torch'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.543181"
+    },
+    "ComfyUI-Crystools": {
+      "name": "ComfyUI-Crystools",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Invalid requirement format: pynvml; platform_machine != 'aarch64'",
+        "dependencies: Invalid requirement format: jetson-stats; platform_machine == 'aarch64'",
+        "dependencies: Missing dependency: deepdiff",
+        "dependencies: Missing dependency: torch",
+        "dependencies: Missing dependency: numpy",
+        "dependencies: Missing dependency: Pillow",
+        "dependencies: Missing dependency: py-cpuinfo",
+        "dependencies: Missing dependency: piexif"
+      ],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.576902"
+    },
+    "ComfyUI-GGUF-FantasyTalking": {
+      "name": "ComfyUI-GGUF-FantasyTalking",
+      "status": "INVALID",
+      "issues": [
+        "dependencies: Missing dependency: gguf",
+        "dependencies: Missing dependency: ftfy",
+        "dependencies: Missing dependency: accelerate",
+        "dependencies: Missing dependency: einops",
+        "dependencies: Missing dependency: diffusers",
+        "dependencies: Missing dependency: sentencepiece",
+        "dependencies: Missing dependency: protobuf"
+      ],
+      "warnings": [
+        "git: Git repository has uncommitted changes",
+        "mappings: NODE_CLASS_MAPPINGS not found in __init__.py after import",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: attempted relative import with no known parent package",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'numpy'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'numpy'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'torch'",
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in nodes.py: No module named 'torch'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.777942"
+    },
+    "comfy-asset-downloader": {
+      "name": "comfy-asset-downloader",
+      "status": "WARNINGS",
+      "issues": [],
+      "warnings": [
+        "mappings: Could not validate NODE_CLASS_MAPPINGS in __init__.py: No module named 'node_module'"
+      ],
+      "timestamp": "2025-10-08T00:30:27.782368"
+    }
+  },
+  "summary": {
+    "total_nodes": 21,
+    "valid_nodes": 0,
+    "warning_nodes": 10,
+    "invalid_nodes": 11
+  }
+}
