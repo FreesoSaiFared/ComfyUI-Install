@@ -46,12 +46,16 @@ except ImportError:
 class ComfyUIBrowserAutomation:
     """Comprehensive browser automation for ComfyUI testing"""
 
-    def __init__(self, comfyui_url: str = "http://localhost:8188"):
+    def __init__(self, comfyui_url: str = "http://localhost:8188", headless: bool = True, debug_port: int = 9222):
         self.comfyui_url = comfyui_url
         self.browser = None
         self.context = None
         self.page = None
         self.automation_method = None
+        self.headless = headless
+        self.debug_port = debug_port
+        self.chrome_process = None  # For external Chrome process management
+        self.profile_dir = f"/tmp/chrome_automation_profile_{int(time.time())}"
 
     async def detect_best_method(self) -> str:
         """Detect the best available automation method"""
@@ -64,37 +68,151 @@ class ComfyUIBrowserAutomation:
         else:
             raise Exception("No browser automation method available")
 
-    async def setup_playwright(self, headless: bool = True) -> bool:
-        """Setup Playwright browser automation"""
+    def get_chrome_launch_args(self, user_data_dir: str = None) -> list:
+        """Get comprehensive Chrome launch arguments for automation"""
+        args = [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-web-security',
+            '--disable-features=TranslateUI,VizDisplayCompositor',
+            '--disable-ipc-flooding-protection',
+            '--disable-software-rasterizer',
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-renderer-backgrounding',
+            '--disable-background-networking',
+            '--disable-default-apps',
+            '--disable-extensions',
+            '--disable-sync',
+            '--disable-translate',
+            '--disable-new-profile-management',
+            '--no-first-run',
+            '--no-default-browser-check',
+            '--disable-background-mode',
+            '--disable-component-update',
+            '--disable-domain-reliability',
+            '--disable-features=AudioServiceOutOfProcess',
+            '--disable-logging',
+            '--silent-launch',
+            '--disable-search-engine-choice-screen',
+            '--disable-restore-session-state',
+            '--auto-open-devtools-for-tabs',  # Keep for debugging
+        ]
+
+        # Add user data directory if specified
+        if user_data_dir:
+            args.extend([f'--user-data-dir={user_data_dir}'])
+
+        return args
+
+    async def check_chrome_debug_port(self) -> bool:
+        """Check if Chrome is running on the debug port"""
+        try:
+            import aiohttp
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f'http://localhost:{self.debug_port}/json/version', timeout=3) as response:
+                    if response.status == 200:
+                        version_info = await response.json()
+                        print(f"✅ Chrome debugging port {self.debug_port} is active: {version_info.get('Browser', 'Unknown')}")
+                        return True
+        except Exception as e:
+            print(f"⚠️  Chrome debugging port {self.debug_port} not available: {e}")
+        return False
+
+    async def start_chrome_with_debug(self) -> bool:
+        """Start Chrome with debugging port enabled for non-headless mode"""
+        if self.headless:
+            return True  # No need for external Chrome in headless mode
+
+        try:
+            import subprocess
+
+            # Check if Chrome is already running on debug port
+            if await self.check_chrome_debug_port():
+                print(f"✅ Chrome already running on debug port {self.debug_port}")
+                return True
+
+            # Start Chrome with debugging enabled
+            chrome_binary = '/usr/bin/google-chrome'
+
+            # Create user data directory
+            os.makedirs(self.profile_dir, exist_ok=True)
+
+            chrome_args = self.get_chrome_launch_args(self.profile_dir)
+            chrome_args.extend([
+                f'--remote-debugging-port={self.debug_port}',
+                '--remote-debugging-address=0.0.0.0',
+                '--new-window',
+                'about:blank'
+            ])
+
+            print(f"🚀 Starting Chrome with debugging on port {self.debug_port}...")
+            print(f"📁 Profile directory: {self.profile_dir}")
+
+            self.chrome_process = subprocess.Popen(
+                [chrome_binary] + chrome_args,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+
+            # Wait for Chrome to start
+            for i in range(10):  # Wait up to 10 seconds
+                await asyncio.sleep(1)
+                if await self.check_chrome_debug_port():
+                    print(f"✅ Chrome started successfully on debug port {self.debug_port}")
+                    return True
+                elif self.chrome_process.poll() is not None:
+                    print(f"❌ Chrome process exited with code: {self.chrome_process.poll()}")
+                    return False
+
+            print("⚠️  Chrome started but debug port not responding")
+            return False
+
+        except Exception as e:
+            print(f"❌ Failed to start Chrome with debug: {e}")
+            return False
+
+    async def setup_playwright(self, headless: bool = None) -> bool:
+        """Setup Playwright browser automation with non-headless support"""
+        if headless is None:
+            headless = self.headless
+
         try:
             self.playwright = await async_playwright().start()
 
-            # Launch browser with optimal settings for ComfyUI
-            self.browser = await self.playwright.chromium.launch(
-                headless=headless,
-                args=[
-                    '--no-sandbox',
-                    '--disable-setuid-sandbox',
-                    '--disable-dev-shm-usage',
-                    '--disable-gpu',
-                    '--disable-web-security',
-                    '--disable-features=TranslateUI',
-                    '--disable-ipc-flooding-protection',
-                    '--enable-unsafe-swiftshader',
-                    '--disable-software-rasterizer',
-                ]
-            )
+            # Start Chrome with debug port if non-headless
+            if not headless:
+                if not await self.start_chrome_with_debug():
+                    print("⚠️  Failed to start external Chrome, falling back to headless mode")
+                    headless = True
 
-            # Create context with good performance settings
+            if headless:
+                # Headless mode - use internal Playwright browser
+                args = self.get_chrome_launch_args()
+                self.browser = await self.playwright.chromium.launch(
+                    headless=True,
+                    args=args
+                )
+            else:
+                # Non-headless mode - connect to existing Chrome via CDP
+                print(f"🔗 Connecting to Chrome on debug port {self.debug_port}...")
+                self.browser = await self.playwright.chromium.connect_over_cdp(
+                    f'http://localhost:{self.debug_port}'
+                )
+
+            # Create context with optimal settings for ComfyUI
             self.context = await self.browser.new_context(
                 viewport={'width': 1920, 'height': 1080},
-                user_agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
+                user_agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
             )
 
             self.page = await self.context.new_page()
             self.automation_method = "playwright"
 
-            print("✅ Playwright browser automation setup complete")
+            mode = "headless" if headless else "non-headless (GUI)"
+            print(f"✅ Playwright browser automation setup complete ({mode})")
             return True
 
         except Exception as e:
@@ -161,8 +279,12 @@ class ComfyUIBrowserAutomation:
             print(f"❌ Selenium setup failed: {e}")
             return False
 
-    async def setup(self, headless: bool = True, preferred_method: Optional[str] = None) -> bool:
+    async def setup(self, headless: Optional[bool] = None, preferred_method: Optional[str] = None) -> bool:
         """Setup browser automation with preferred or best available method"""
+
+        # Use instance default if no headless parameter provided
+        if headless is None:
+            headless = self.headless
 
         if preferred_method == "playwright" and PLAYWRIGHT_AVAILABLE:
             return await self.setup_playwright(headless)
@@ -281,23 +403,54 @@ class ComfyUIBrowserAutomation:
             return {"status": "error", "error": str(e), "running": False}
 
     async def cleanup(self):
-        """Clean up browser resources"""
+        """Clean up browser resources and external Chrome process"""
         try:
+            # Close page and context first
+            if hasattr(self, 'page') and self.page:
+                await self.page.close()
+            if hasattr(self, 'context') and self.context:
+                await self.context.close()
+
+            # Close browser based on method
             if self.automation_method == "playwright":
-                if self.context:
-                    await self.context.close()
-                if self.browser:
+                if hasattr(self, 'browser') and self.browser:
                     await self.browser.close()
+                if hasattr(self, 'playwright') and self.playwright:
+                    await self.playwright.stop()
 
             elif self.automation_method == "cdp":
                 if hasattr(self, 'cdp_websocket'):
                     await self.cdp_websocket.close()
-                if hasattr(self, 'chrome_process'):
+                if hasattr(self, 'chrome_process') and self.chrome_process:
                     self.chrome_process.terminate()
 
             elif self.automation_method == "selenium":
                 if hasattr(self, 'driver'):
                     self.driver.quit()
+
+            # Clean up external Chrome process if we started it
+            if self.chrome_process and not self.headless:
+                try:
+                    print("🔄 Shutting down external Chrome process...")
+                    self.chrome_process.terminate()
+                    try:
+                        self.chrome_process.wait(timeout=5)
+                    except subprocess.TimeoutExpired:
+                        print("⚠️  Chrome didn't terminate gracefully, forcing shutdown...")
+                        self.chrome_process.kill()
+                        self.chrome_process.wait()
+                    print("✅ External Chrome process shut down")
+                except Exception as chrome_error:
+                    print(f"⚠️  Error shutting down Chrome: {chrome_error}")
+
+            # Clean up profile directory if it exists
+            if os.path.exists(self.profile_dir) and not self.headless:
+                try:
+                    import shutil
+                    shutil.rmtree(self.profile_dir)
+                    print(f"🗑️  Cleaned up profile directory: {self.profile_dir}")
+                except Exception as cleanup_error:
+                    print(f"⚠️  Could not clean up profile directory: {cleanup_error}")
 
             print("✅ Browser cleanup complete")
 
