@@ -1,0 +1,112 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Base SDXL Model",
+      "version": "1.0.0"
+    }
+  },
+  "2": {
+    "inputs": {
+      "unet_name": "sdxl_lightning_4step_unet.safetensors",
+      "weight": 1.0
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Lightning UNET",
+      "version": "1.0.0"
+    }
+  },
+  "3": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 2
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image",
+      "version": "1.0.0"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": "cinematic shot of a futuristic city at sunset with flying cars, hyperrealistic, detailed architecture, high quality",
+      "clip": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)",
+      "version": "1.0.0"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text": "blurry, low quality, distorted, cartoon, painting, bad composition, overexposed, underexposed",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative)",
+      "version": "1.0.0"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 42,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "karras",
+      "denoise": 1.0,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "latent_image": [
+        "3",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler",
+      "version": "1.0.0"
+    }
+  },
+  "7": {
+    "inputs": {
+      "filename_prefix": "lightning_unet_test",
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image",
+      "version": "1.0.0"
+    }
+  }
+}

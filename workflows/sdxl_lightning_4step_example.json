@@ -1,0 +1,145 @@
+{
+  "3": {
+    "inputs": {
+      "ckpt_name": "sdxl_lightning_4step.safetensors",
+      "vae_name": "Baked VAE",
+      "clip_name1": "clip_g.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "lora_name": "None",
+      "lora_model_strength": 1.0,
+      "lora_clip_strength": 1.0,
+      "optional_lora_name": "None",
+      "optional_lora_model_strength": 1.0,
+      "optional_lora_clip_strength": 1.0
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint",
+      "version": "1.0.0"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": "professional photography of a beautiful landscape with mountains and lake, high quality, detailed",
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)",
+      "version": "1.0.0"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image",
+      "version": "1.0.0"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 123456789,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0,
+      "model": [
+        "3",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler",
+      "version": "1.0.0"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "blurry, low quality, distorted, bad anatomy, ugly, watermark, text, signature",
+      "clip": [
+        "3",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative)",
+      "version": "1.0.0"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "3",
+        2
+      ],
+      "compressed": false
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode",
+      "version": "1.0.0"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "sdxl_lightning_test",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image",
+      "version": "1.0.0"
+    }
+  },
+  "10": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint (Optional Base Model)",
+      "version": "1.0.0"
+    }
+  },
+  "11": {
+    "inputs": {
+      "unet_name": "sdxl_lightning_4step_unet.safetensors",
+      "weight": 1.0
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load UNET",
+      "version": "1.0.0"
+    }
+  }
+}
